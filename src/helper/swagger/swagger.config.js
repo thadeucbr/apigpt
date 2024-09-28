@@ -1,9 +1,7 @@
 // swagger.js
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import * as dotenv from 'dotenv';
 import aiPath from './path/ai/ai.swagger.js';
-dotenv.config();
 
 const swaggerOptions = {
   swaggerDefinition: {
