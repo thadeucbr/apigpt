@@ -1,5 +1,3 @@
-import { createUserTool } from './user/createUser.tool.js'
+import createUserTool from './user/createUser.tool.js'
 
-export {
-  createUserTool
-}
+export default [createUserTool]
