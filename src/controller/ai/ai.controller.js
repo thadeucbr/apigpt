@@ -1,11 +1,12 @@
 import aiService from '../../service/ai/ai.service.js';
 
 const aiController = async (req, res) => {
-  const { body, header } = req;
-  const { authorization } = header;
+  const { body, headers } = req;
+  const response = await aiService({ body, headers });
 
-  const response = await aiService({ body, header, authorization });
-  res.status(200).send(response);
+  const { message, statusCode, status } = JSON.parse(response.content);
+  res.status(statusCode).json({ status, message });
+  // res.send(response)
 }
 
 export default aiController;

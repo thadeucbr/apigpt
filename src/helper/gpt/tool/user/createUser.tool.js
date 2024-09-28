@@ -2,29 +2,29 @@ const createUserTool = {
   "type": "function",
   "function": {
     "name": "create_user",
-    "description": "Create a new user with validated properties.",
+    "description": "Create a new user with validated properties. (all fields must be in english)",
     "parameters": {
       "type": "object",
       "properties": {
-        "nome": {
+        "name": {
           "type": "string",
-          "description": "Nome do usuário (deve ser um nome válido)."
+          "description": "User's name (must be a valid name)."
         },
-        "dataNascimento": {
+        "birthDate": {
           "type": "string",
           "format": "date",
-          "description": "Data de nascimento do usuário (deve ser uma data válida e o usuário deve ter mais de 18 anos)."
+          "description": "User's birth date (must be a valid date and the user must be over 18 years old)."
         },
-        "celular": {
+        "mobile": {
           "type": "string",
-          "description": "Número de celular do usuário (deve ser um número válido)."
+          "description": "User's mobile number (must be a valid number)."
         },
-        "senha": {
+        "password": {
           "type": "string",
-          "description": "Senha do usuário (deve conter no mínimo 6 dígitos)."
+          "description": "User's password is required and must contain at least 6 digits."
         }
       },
-      "required": ["nome", "dataNascimento", "celular", "senha"],
+      "required": ["name", "birthDate", "mobile", "password"],
       "additionalProperties": false
     }
   }
