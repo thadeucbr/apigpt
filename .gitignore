@@ -1,0 +1,68 @@
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de compilação
+*.o
+*.out
+*.class
+*.exe
+*.dll
+*.so
+*.dSYM/
+
+# Ignorar dependências e bibliotecas
+node_modules/
+vendor/
+bower_components/
+
+# Ignorar arquivos de configuração de IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+.vscode/
+*.swp
+*.swm
+*.swo
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Ignorar arquivos de caches
+.cache/
+*.cache
+
+# Ignorar arquivos de ambiente
+.env
+.env.local
+.env.*.local
+
+# Ignorar arquivos de build
+dist/
+build/
+out/
+coverage/
+
+# Ignorar arquivos de testes
+*.spec.js
+*.test.js
+coverage/
+
+# Ignorar arquivos de configuração do sistema
+*.pid
+*.seed
+
+# Ignorar arquivos de backup
+*~ 
+*.bak
+
+# Ignorar arquivos de configuração de sistemas de controle de versão
+.svn/
+.hg/
+.git/
