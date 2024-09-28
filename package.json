@@ -1,0 +1,12 @@
+{
+  "name": "apigpt",
+  "version": "1.0.0",
+  "description": "This project aims to integrate GPT with Express.js, allowing GPT to manage all API responses and connect directly to a MongoDB database. The goal is to explore the capabilities of GPT tools in a practical application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
