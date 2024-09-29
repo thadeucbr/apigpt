@@ -4,6 +4,6 @@ import mongoRepository from '../database/repository/mongo.repository.js';
 
 export default {
   get_schemas: getSchemas,
-  mongo_repository: mongoRepository,
-  // ai_repository: aiRepository
+  ai_repository: aiRepository,
+  // mongo_repository: mongoRepository
 }
