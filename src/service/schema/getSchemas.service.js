@@ -3,17 +3,17 @@ const schemas = {
   User: {
     description: "Represents a user in the system.",
     properties: UserSchema.obj,
-    model: 'UserModel',
+    model: 'User',
   },
   Product: {
     description: "Represents a product in the inventory.",
     properties: ProductSchema.obj,
-    model: 'ProductModel',
+    model: 'Product',
   },
   Order: {
     description: "Represents a customer's order.",
     properties: OrderSchema.obj,
-    model: 'OrderModel',
+    model: 'Order',
   },
 };
 
