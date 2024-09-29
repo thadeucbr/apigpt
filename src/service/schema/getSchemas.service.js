@@ -1,3 +1,4 @@
+import { model } from 'mongoose';
 import { UserSchema, ProductSchema, OrderSchema } from '../../database/schema/index.js';
 const schemas = {
   User: {
@@ -22,9 +23,8 @@ const getSchemas = () => {
     name,
     description: schema.description,
     properties: schema.properties,
+    model: schema.model
   }));
 };
 
 export default getSchemas;
-
-console.log(getSchemas());
