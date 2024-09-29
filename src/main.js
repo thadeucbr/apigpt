@@ -14,7 +14,7 @@ const start = async () => {
   
   app.use(express.json());
   app.use(gptMiddleware)
-  app.use(router);
+  // app.use(router);
 
   setupSwagger(app)
 

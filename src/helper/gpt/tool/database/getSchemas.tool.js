@@ -39,7 +39,7 @@ const getSchemasTool = {
                       "description": "Indicates if the property must be unique."
                     },
                     "default": {
-                      "type": "any",
+                      "type": "string",
                       "description": "Default value for the property."
                     },
                     "type": {
