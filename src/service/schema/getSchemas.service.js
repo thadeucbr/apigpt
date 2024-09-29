@@ -26,3 +26,5 @@ const getSchemas = () => {
 };
 
 export default getSchemas;
+
+console.log(getSchemas());

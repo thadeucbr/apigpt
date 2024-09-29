@@ -20,12 +20,28 @@ const getSchemasTool = {
                 "type": "string",
                 "description": "Description of the schema."
               },
+              "model": {
+                "type": "string",
+                "description": "Name of the corresponding model."
+              },
               "properties": {
                 "type": "object",
                 "description": "Properties of the schema.",
                 "additionalProperties": {
                   "type": "object",
                   "properties": {
+                    "required": {
+                      "type": "boolean",
+                      "description": "Indicates if the property is required."
+                    },
+                    "unique": {
+                      "type": "boolean",
+                      "description": "Indicates if the property must be unique."
+                    },
+                    "default": {
+                      "type": "any",
+                      "description": "Default value for the property."
+                    },
                     "type": {
                       "type": "string",
                       "description": "Data type of the property."
@@ -34,9 +50,9 @@ const getSchemasTool = {
                       "type": "string",
                       "description": "Description of the property."
                     },
-                    "required": {
-                      "type": "boolean",
-                      "description": "Indicates if the property is required."
+                    "enum": {
+                      "type": "array",
+                      "description": "Possible values for the property."
                     }
                   }
                 }
