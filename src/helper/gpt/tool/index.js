@@ -7,5 +7,5 @@ export default [
   // createUserTool, 
   aiRepositoryTool, 
   getSchemasTool,
-  mongoRepositoryTool
+  // mongoRepositoryTool
 ]
