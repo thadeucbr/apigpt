@@ -23,13 +23,13 @@ This project aims to integrate GPT with Express.js, allowing GPT to manage all A
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone git@github.com:thadeucbr/apigpt.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd <project-directory>
+   cd apigpt
    ```
 
 3. Install dependencies:
