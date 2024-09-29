@@ -21,6 +21,7 @@ const aiService = async ({ body, header, query, method, url }) => {
         functionResponse = { message: 'Function not found', statusCode: 404, status: 'error' }
       } else {
         functionResponse = await functions[name](JSON.parse(args))
+        console.log(functionResponse)
       }
       context.push({ 
         role: 'tool', 

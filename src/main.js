@@ -8,7 +8,7 @@ import gptMiddleware from './middleware/ai/gpt.middleware.js';
 
 
 const start = async () => {
-  // await startMongoose();
+  await startMongoose();
   
   const app = express();
   

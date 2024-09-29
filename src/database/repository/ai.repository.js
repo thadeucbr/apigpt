@@ -11,7 +11,6 @@ const aiRepository = async ({ model, query, transaction }) => {
       },
       create: async () => {
         const document = new models[model](query);
-        console.log('DOOOOOC', document)
         return await document.save();
       },
       update: async () => {
