@@ -2,10 +2,10 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import startMongoose from './database/config/mongoose.config.js';
-import router from './route/index.js';
 import setupSwagger from './helper/swagger/swagger.config.js';
 import gptMiddleware from './middleware/ai/gpt.middleware.js';
-
+import asyncHandler from './middleware/error/asyncHandler.middlware.js';
+import errorHandler from './middleware/error/errorHandler.middlware.js';
 
 const start = async () => {
   await startMongoose();
@@ -13,8 +13,8 @@ const start = async () => {
   const app = express();
   
   app.use(express.json());
-  app.use(gptMiddleware)
-  // app.use(router);
+  app.use(asyncHandler(gptMiddleware))
+  app.use(errorHandler)
 
   setupSwagger(app)
 
