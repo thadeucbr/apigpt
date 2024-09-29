@@ -1,26 +1,35 @@
+import * as models from '../model/index.js';
+
 const aiRepository = async (model, query, transaction) => {
   const methods = {
     find: async () => {
-      return await model.find(query).exec();
+      return await models[model].find(query).exec();
     },
     findOne: async () => {
-      return await model.findOne(query).exec();
+      return await models[model].findOne(query).exec();
     },
     create: async () => {
-      const document = new model(query);
+      const document = new models[model](query);
       return await document.save();
     },
     update: async () => {
-      return await model.updateOne(query.filter, query.update).exec();
+      return await models[model].updateOne(query.filter, query.update).exec();
     },
     delete: async () => {
-      return await model.deleteOne(query).exec();
+      return await models[model].deleteOne(query).exec();
     },
   };
 
-  if (methods[transaction]) {
+  if (methods[transaction] && models[model]) {
     return await methods[transaction]();
   } else {
-    throw new Error('Invalid transaction type');
+    if (!methods[transaction]) {
+      throw new Error('Invalid transaction type');
+    }
+    if (!models[model]) {
+      throw new Error('Invalid model');
+    }
   }
 };
+
+export default aiRepository;
