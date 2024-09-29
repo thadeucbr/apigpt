@@ -25,7 +25,7 @@ const mockMongooseError = {
 // Simulating a Mongoose create operation
 const createUser = async (userData) => {
   // Mocking the creation of a user
-  return mockMongooseError;
+  return mockMongooseResponse;
 };
 
 export default createUser;

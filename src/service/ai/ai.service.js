@@ -1,5 +1,6 @@
 import createUser from '../../database/repository/user/createUser.repository.js';
 import gpt from '../../helper/gpt/config/gpt.config.js';
+import functions from '../../service/index.js'
 
 const aiService = async ({ body, header, query, method, url }) => {
   try {
@@ -14,18 +15,24 @@ const aiService = async ({ body, header, query, method, url }) => {
     let response = await gpt({ completion: context })
 
     async function callTool(gpt) {
-      const createdUser = await createUser()
+      const { name, arguments: args } = gpt.tool_calls[0].function
+      let functionResponse;
+      if (!functions[name]) {
+        functionResponse = { message: 'Function not found', statusCode: 404, status: 'error' }
+      } else {
+        functionResponse = await functions[name](JSON.parse(args))
+      }
       context.push({ 
         role: 'tool', 
-        content: JSON.stringify(createdUser), 
+        content: JSON.stringify(functionResponse) || functionResponse.message, 
         tool_call_id: gpt.tool_calls[0].id 
       })
+      
     }
     context.push(response)
     while (!response.content) {
-      callTool(response)
+      await callTool(response)
       response = await gpt({ completion: context })
-
       context.push(response)
     }
     return response

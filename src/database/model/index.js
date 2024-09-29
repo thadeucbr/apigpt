@@ -1,5 +1,5 @@
-import UserModel from './user.model.js'
-import ProductModel from './product.model.js'
-import OrderModel from './order.model.js'
+import User from './user.model.js'
+import Product from './product.model.js'
+import Order from './order.model.js'
 
-export { UserModel, ProductModel, OrderModel }
+export { User, Product, Order }
