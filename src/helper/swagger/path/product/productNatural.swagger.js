@@ -7,14 +7,13 @@ export default {
       tags: ['Natural Language'], // Tag para agrupar na seção Natural Language
       parameters: [
         {
-          name: 'input',
+          name: 'prompt',
           in: 'query',
           required: true,
           description: 'Natural language query to retrieve products',
           schema: {
             type: 'string',
-            example:
-              'Show me all products priced between 10 and 50 and on page 2.',
+            example: 'Show me all products priced between 10 and 50',
           },
         },
       ],
@@ -69,7 +68,7 @@ export default {
       tags: ['Natural Language'], // Tag para agrupar na seção Natural Language
       parameters: [
         {
-          name: 'input',
+          name: 'prompt',
           in: 'query',
           required: true,
           description: 'Natural language query to retrieve a specific product',
