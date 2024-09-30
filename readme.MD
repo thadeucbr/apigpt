@@ -1,4 +1,4 @@
-# Integração do GPT com Express.js: Gerenciamento de Respostas da API com MongoDB
+# GPT Integration with Express.js: Managing API Responses with MongoDB
 
 ## Description
 
