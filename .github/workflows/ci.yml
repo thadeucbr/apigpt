@@ -4,11 +4,10 @@ on:
   push:
     branches:
       - main
-      - developer
   pull_request:
     branches:
       - main
-      - developer
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,7 +34,7 @@ jobs:
         run: npm run coverage # Certifique-se de ter um script coverage no seu package.json
 
       - name: Upload coverage results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3 # Atualizando para a versão v3
         with:
           name: coverage-results
           path: coverage/ # Ajuste conforme o diretório onde os resultados de cobertura são gerados
