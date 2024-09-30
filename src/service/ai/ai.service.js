@@ -41,7 +41,7 @@ const aiService = async ({
 
       context.push({
         role: 'tool',
-        content: JSON.stringify(functionResponse),
+        content: JSON.stringify(functionResponse) || 'Return error',
         tool_call_id: gpt.tool_calls[0].id,
       });
       return null;
