@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - developer
   pull_request:
     branches:
       - main
+      - developer
 
 jobs:
   test:
@@ -25,16 +27,7 @@ jobs:
         run: npm install
 
       - name: List test files
-        run: find src -name "*.test.js" # Lista arquivos de teste para verificação
+        run: find src -name "*.test.js"
 
       - name: Run tests
-        run: npm test # Executa os testes
-
-      - name: Generate test coverage
-        run: npm run coverage
-
-      - name: Upload coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-results
-          path: coverage/ # Ajuste conforme o diretório onde os resultados de cobertura são gerados
+        run: npm test
