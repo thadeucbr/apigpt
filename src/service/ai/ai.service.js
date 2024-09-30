@@ -33,7 +33,7 @@ const aiService = async ({
           message: 'Function not found',
           statusCode: 404,
           status: 'error',
-        }; // Retorna imediatamente
+        };
       } else {
         functionResponse = await functions[name](JSON.parse(args));
         console.log(functionResponse);
@@ -44,18 +44,18 @@ const aiService = async ({
         content: JSON.stringify(functionResponse),
         tool_call_id: gpt.tool_calls[0].id,
       });
-      return null; // Retorna null se não houver erro
+      return null;
     }
 
     context.push(response);
     let retries = 0;
 
     while (!response.content && retries < 20) {
-      const toolErrorResponse = await callTool(response); // Captura a resposta da função
-      if (toolErrorResponse) {
-        return toolErrorResponse; // Se houve erro, retorna imediatamente
-      }
+      const toolErrorResponse = await callTool(response);
 
+      if (toolErrorResponse) {
+        return toolErrorResponse;
+      }
       response = await gpt({ completion: context });
       context.push(response);
       retries++;
