@@ -27,8 +27,11 @@ jobs:
       - name: Run linter
         run: npm run lint
 
+      - name: List test files
+        run: find src -name "*.test.js" # Lista arquivos de teste para verificação
+
       - name: Run tests
-        run: npm test
+        run: npm test -- --verbose # Executa os testes com saída verbosa
 
       - name: Generate test coverage
         run: npm run coverage
@@ -37,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: coverage-results
-          path: coverage/
+          path: coverage/ # Ajuste conforme o diretório onde os resultados de cobertura são gerados
