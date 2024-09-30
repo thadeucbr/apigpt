@@ -1,12 +1,12 @@
 import gpt from '../../helper/gpt/config/gpt.config.js';
 import functions from '../../service/index.js';
 
-const aiService = async ({ body, header, query, method, url }) => {
+const aiService = async ({ body, header, query, method, url, firstContext }) => {
   try {
     const context = [
       { 
         role: 'system', 
-        content: 'You are an AI that manage api responses, you will receive body and header and analyse with your tools which function to call and send responses. Your response must always be in JSON in this format: { message, statusCode, status }. Important, don’t send JSON in the response' 
+        content: firstContext 
       }
     ];
 
