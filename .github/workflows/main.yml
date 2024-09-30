@@ -31,7 +31,7 @@ jobs:
         run: find src -name "*.test.js" # Lista arquivos de teste para verificação
 
       - name: Run tests
-        run: npm test -- --verbose # Executa os testes com saída verbosa
+        run: npm test # Removeu --verbose
 
       - name: Generate test coverage
         run: npm run coverage
