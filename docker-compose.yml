@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    image: node:20.17.0
+    container_name: apigpt
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "${EXPRESS_PORT}:${EXPRESS_PORT}"
+    command: npm run dev
+    env_file:
+      - .env
+
+#   mongo:
+#     image: mongo:latest
+#     container_name: mongo
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - mongo_data:/data/db
+
+# volumes:
+#   mongo_data:
