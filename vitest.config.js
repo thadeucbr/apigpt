@@ -9,7 +9,11 @@ export default defineConfig({
       'node_modules', 
       'dist', 
       'cypress', 
-      'src/database/config/mongoose.config.js'
+      'src/database/config/mongoose.config.js',
+      'src/database/model',
+      'src/database/schema',
+      'src/helper/gpt/tool',
+      'src/helper/swagger'
     ],
     // Adicione as opções desejadas aqui
     silent: false, // Para mostrar logs detalhados
