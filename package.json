@@ -6,6 +6,7 @@
   "module": "src/main.js",
   "type": "module",
   "scripts": {
+    "format": "prettier --write src/**/*.{js,mjs,json}",
     "lint": "eslint src --fix",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -29,8 +30,11 @@
     "@vitest/coverage-istanbul": "^2.1.1",
     "@vitest/coverage-v8": "^2.1.1",
     "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.9.0",
     "nodemon": "^3.1.7",
+    "prettier": "^3.3.3",
     "supertest": "^7.0.0",
     "vitest": "^2.1.1"
   },
