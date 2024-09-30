@@ -14,12 +14,10 @@ const start = async () => {
   const app = express();
 
   app.use(express.json());
+  setupSwagger(app);
   app.use(asyncHandler(validateRequest));
   app.use(asyncHandler(gptMiddleware));
   app.use(errorHandler);
-
-  setupSwagger(app);
-
   app.listen(process.env.EXPRESS_PORT || 3000, () => {
     console.log(`Server running on port ${process.env.EXPRESS_PORT || 3000}`);
   });
