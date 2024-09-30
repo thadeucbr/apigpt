@@ -34,7 +34,7 @@ jobs:
         run: npm run coverage
 
       - name: Upload coverage results
-        uses: actions/upload-artifact@v3 # Certifique-se de que está usando v3
+        uses: actions/upload-artifact@v3
         with:
           name: coverage-results
-          path: coverage/ # Ajuste conforme o diretório onde os resultados de cobertura são gerados
+          path: coverage/
