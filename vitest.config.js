@@ -18,6 +18,7 @@ export default defineConfig({
     ],
     silent: false,
     coverage: {
+      reporter: ['text', 'lcov'],
       all: true,
       exclude: [
         'node_modules',
