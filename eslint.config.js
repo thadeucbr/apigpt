@@ -1,21 +1,26 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
+import pluginPrettier from "eslint-plugin-prettier";
 
 export default [
   {
     languageOptions: {
       globals: {
         ...globals.browser,
-        process: true, // Adiciona 'process' como uma variável global
+        process: true,
       },
     },
-    ignores: ['**/*.test.js', '**/*.test.mjs', '**/__tests__/'], // Ignorar arquivos de teste
+    ignores: ['**/*.test.js', '**/*.test.mjs', '**/__tests__/'],
   },
   pluginJs.configs.recommended,
   {
     rules: {
-      'no-unused-vars': ['warn', { varsIgnorePattern: '^_' }], // Ignorar variáveis que começam com '_'
-      'no-undef': 'off', // Desativar a regra 'no-undef'
+      'no-unused-vars': ['warn', { varsIgnorePattern: '^_' }],
+      'no-undef': 'off',
+      'no-warning-comments': [
+        'warn',
+        { terms: ['TODO', 'FIXME'], location: 'anywhere' }
+      ],
       'prettier/prettier': [
         'error',
         {
@@ -31,6 +36,8 @@ export default [
         },
       ],
     },
-    plugins: ['prettier'],
+    plugins: {
+      prettier: pluginPrettier,
+    },
   },
 ];
