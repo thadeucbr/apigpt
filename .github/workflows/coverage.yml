@@ -1,26 +1,30 @@
-name: Test Coverage
+name: Coverage
 
 on:
+  push:
+    branches:
+      - main
+      - developer
   pull_request:
     branches:
       - main
+      - developer
 
 jobs:
-  test:
+  coverage:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '20.17.0'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Run tests with coverage
-        run: npm run test -- --coverage
-        
+      - name: Generate test coverage
+        run: npm run coverage
