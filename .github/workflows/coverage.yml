@@ -34,7 +34,7 @@ jobs:
 
       - name: Check coverage threshold
         run: |
-          COVERAGE=$(grep -o '[0-9]\+%' coverage_output.txt | head -n 1 | tr -d '%')
+          COVERAGE=$(grep -oP 'All files\s+\|\s+\K[0-9]+(?=\s+\|)' coverage_output.txt)
           echo "Coverage is at $COVERAGE%"
           if [ -z "$COVERAGE" ]; then
             echo "No coverage value found, failing the job."
