@@ -1,4 +1,3 @@
-// swagger.js
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import aiPath from './path/ai/ai.swagger.js';
