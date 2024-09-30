@@ -27,7 +27,7 @@ describe('getSchemas', () => {
     const expectedResult = [
       {
         name: 'User',
-        description: "Represents a user in the system.",
+        description: 'Represents a user in the system.',
         properties: {
           username: { type: 'string' },
           password: { type: 'string' },
@@ -36,7 +36,7 @@ describe('getSchemas', () => {
       },
       {
         name: 'Product',
-        description: "Represents a product in the inventory.",
+        description: 'Represents a product in the inventory.',
         properties: {
           name: { type: 'string' },
           price: { type: 'number' },

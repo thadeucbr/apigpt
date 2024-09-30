@@ -38,12 +38,24 @@ describe('aiService', () => {
     gpt.mockResolvedValueOnce(mockGptResponse1); // Primeira chamada ao gpt
     gpt.mockResolvedValueOnce(mockGptResponse2); // Segunda chamada ao gpt
 
-    functions['mockFunction'] = vi.fn().mockResolvedValue({ message: 'Success', statusCode: 200, status: 'success' });
+    functions['mockFunction'] = vi.fn().mockResolvedValue({
+      message: 'Success',
+      statusCode: 200,
+      status: 'success',
+    });
 
-    const response = await aiService({ body: mockBody, header: mockHeader, query: mockQuery, method: mockMethod, url: mockUrl });
+    const response = await aiService({
+      body: mockBody,
+      header: mockHeader,
+      query: mockQuery,
+      method: mockMethod,
+      url: mockUrl,
+    });
 
     expect(gpt).toHaveBeenCalledTimes(2); // Verifica que gpt foi chamado duas vezes
-    expect(functions['mockFunction']).toHaveBeenCalledWith({ param1: 'value1' }); // Verifica se a função correta foi chamada
+    expect(functions['mockFunction']).toHaveBeenCalledWith({
+      param1: 'value1',
+    }); // Verifica se a função correta foi chamada
     expect(response).toEqual(mockGptResponse2); // A última resposta deve ser a retornada
   });
 
@@ -62,16 +74,32 @@ describe('aiService', () => {
     };
     gpt.mockResolvedValue(mockGptResponse);
 
-    const response = await aiService({ body: mockBody, header: mockHeader, query: mockQuery, method: mockMethod, url: mockUrl });
+    const response = await aiService({
+      body: mockBody,
+      header: mockHeader,
+      query: mockQuery,
+      method: mockMethod,
+      url: mockUrl,
+    });
 
-    expect(response).toEqual({ message: 'Function not found', statusCode: 404, status: 'error' });
+    expect(response).toEqual({
+      message: 'Function not found',
+      statusCode: 404,
+      status: 'error',
+    });
   });
 
   it('should handle errors from gpt', async () => {
     const errorMessage = 'GPT error';
     gpt.mockRejectedValue(new Error(errorMessage)); // Simula um erro na chamada do gpt
 
-    const response = await aiService({ body: mockBody, header: mockHeader, query: mockQuery, method: mockMethod, url: mockUrl });
+    const response = await aiService({
+      body: mockBody,
+      header: mockHeader,
+      query: mockQuery,
+      method: mockMethod,
+      url: mockUrl,
+    });
 
     expect(response).toBe(errorMessage); // Verifica se a mensagem de erro foi retornada
   });

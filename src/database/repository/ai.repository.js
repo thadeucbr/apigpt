@@ -20,7 +20,7 @@ const aiRepository = async ({ model, query, transaction }) => {
         return await models[model].deleteOne(query).exec();
       },
     };
-  
+
     if (methods[transaction] && models[model]) {
       return await methods[transaction]();
     } else {
@@ -32,7 +32,7 @@ const aiRepository = async ({ model, query, transaction }) => {
       }
     }
   } catch (err) {
-    return { status: 'error', message: err.message};
+    return { status: 'error', message: err.message };
   }
 };
 

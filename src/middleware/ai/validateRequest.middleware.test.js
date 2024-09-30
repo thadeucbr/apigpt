@@ -36,16 +36,18 @@ describe('validateRequest Middleware', () => {
 
     expect(response.status).toBe(200);
     expect(response.text).toBe('OK');
-    
-    expect(aiService.default).toHaveBeenCalledWith(expect.objectContaining({
-      body: { input: 'Valid input' },
-      header: expect.objectContaining({
-        authorization: 'Bearer token',
-      }),
-      query: {},
-      method: 'POST',
-      url: '/test',
-    }));
+
+    expect(aiService.default).toHaveBeenCalledWith(
+      expect.objectContaining({
+        body: { input: 'Valid input' },
+        header: expect.objectContaining({
+          authorization: 'Bearer token',
+        }),
+        query: {},
+        method: 'POST',
+        url: '/test',
+      })
+    );
   });
 
   it('should respond with an error message for invalid requests', async () => {
