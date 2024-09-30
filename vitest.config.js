@@ -10,12 +10,22 @@ export default defineConfig({
       'dist', 
       'cypress', 
       'src/database/config/mongoose.config.js',
-      'src/database/model',
-      'src/database/schema',
-      'src/helper/gpt/tool',
-      'src/helper/swagger',
-      'src/route'
+      'src/database/model/**', // Usando ** para garantir que todos os arquivos sejam excluídos
+      'src/database/schema/**',
+      'src/helper/gpt/tool/**',
+      'src/helper/swagger/**',
+      'src/route/**',
     ],
     silent: false,
+  },
+  coverage: {
+    exclude: [
+      'src/database/config/mongoose.config.js',
+      'src/database/model/**',
+      'src/database/schema/**',
+      'src/helper/gpt/tool/**',
+      'src/helper/swagger/**',
+      'src/route/**',
+    ],
   },
 });
