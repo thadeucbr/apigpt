@@ -50,8 +50,6 @@ out/
 coverage/
 
 # Ignorar arquivos de testes
-*.spec.js
-*.test.js
 coverage/
 
 # Ignorar arquivos de configuração do sistema
