@@ -3,6 +3,8 @@ import swaggerUi from 'swagger-ui-express';
 import * as dotenv from 'dotenv';
 import userSwagger from './path/user/user.swagger.js';
 import userNaturalSwagger from './path/user/userNatural.swagger.js';
+import productSwagger from './path/product/product.swagger.js';
+import productNaturalSwagger from './path/product/productNatural.swagger.js';
 dotenv.config();
 const swaggerOptions = {
   swaggerDefinition: {
@@ -29,6 +31,8 @@ swaggerDocs.paths = {
   ...swaggerDocs.paths,
   ...userSwagger,
   ...userNaturalSwagger,
+  ...productSwagger,
+  ...productNaturalSwagger,
 };
 
 const setupSwagger = app => {

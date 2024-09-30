@@ -1,25 +1,26 @@
 export default {
-  '/users/natural': {
+  '/products/natural': {
     get: {
-      summary: 'Fetch All Users via Natural Language',
+      summary: 'Fetch All Products via Natural Language',
       description:
-        'Retrieves a list of all users by interpreting natural language input with optional filters.',
+        'Retrieves a list of all products by interpreting natural language input with optional filters.',
       tags: ['Natural Language'], // Tag para agrupar na seção Natural Language
       parameters: [
         {
           name: 'input',
           in: 'query',
           required: true,
-          description: 'Natural language query to retrieve users',
+          description: 'Natural language query to retrieve products',
           schema: {
             type: 'string',
-            example: 'Show me all users.',
+            example:
+              'Show me all products priced between 10 and 50 and on page 2.',
           },
         },
       ],
       responses: {
         200: {
-          description: 'List of users retrieved successfully',
+          description: 'List of products retrieved successfully',
           content: {
             'application/json': {
               schema: {
@@ -27,9 +28,9 @@ export default {
                 properties: {
                   total: {
                     type: 'integer',
-                    description: 'Total number of users available',
+                    description: 'Total number of products available',
                   },
-                  users: {
+                  products: {
                     type: 'array',
                     items: {
                       type: 'object',
@@ -37,13 +38,16 @@ export default {
                         name: {
                           type: 'string',
                         },
-                        email: {
+                        description: {
                           type: 'string',
                         },
-                        birthDate: {
-                          type: 'string',
+                        price: {
+                          type: 'number',
                         },
-                        mobile: {
+                        stock: {
+                          type: 'number',
+                        },
+                        category: {
                           type: 'string',
                         },
                       },
@@ -57,27 +61,27 @@ export default {
       },
     },
   },
-  '/user/natural': {
+  '/product/natural': {
     get: {
-      summary: 'Fetch Specific User via Natural Language',
+      summary: 'Fetch Specific Product via Natural Language',
       description:
-        'Retrieves details of a specific user by interpreting natural language input.',
+        'Retrieves details of a specific product by interpreting natural language input.',
       tags: ['Natural Language'], // Tag para agrupar na seção Natural Language
       parameters: [
         {
           name: 'input',
           in: 'query',
           required: true,
-          description: 'Natural language query to retrieve a specific user',
+          description: 'Natural language query to retrieve a specific product',
           schema: {
             type: 'string',
-            example: 'Find the user named John Doe.',
+            example: 'Find the product named Sample Product.',
           },
         },
       ],
       responses: {
         200: {
-          description: 'User details retrieved successfully',
+          description: 'Product details retrieved successfully',
           content: {
             'application/json': {
               schema: {
@@ -86,13 +90,16 @@ export default {
                   name: {
                     type: 'string',
                   },
-                  email: {
+                  description: {
                     type: 'string',
                   },
-                  birthDate: {
-                    type: 'string',
+                  price: {
+                    type: 'number',
                   },
-                  mobile: {
+                  stock: {
+                    type: 'number',
+                  },
+                  category: {
                     type: 'string',
                   },
                 },
@@ -103,10 +110,11 @@ export default {
       },
     },
   },
-  '/user/natural/create': {
+  '/product/natural/create': {
     post: {
-      summary: 'Create User via Natural Language',
-      description: 'Creates a new user by interpreting natural language input.',
+      summary: 'Create Product via Natural Language',
+      description:
+        'Creates a new product by interpreting natural language input.',
       tags: ['Natural Language'], // Tag para agrupar na seção Natural Language
       requestBody: {
         required: true,
@@ -118,7 +126,7 @@ export default {
                 input: {
                   type: 'string',
                   example:
-                    'I want to create a user named John Doe, with email john.doe@example.com, password securepassword123, birth date 1990-01-01, and mobile +1234567890.',
+                    'I want to create a product named Sample Product, with description "This is a sample product description.", price 29.99, stock 100, and category Electronics.',
                 },
               },
               required: ['input'],
@@ -128,7 +136,7 @@ export default {
       },
       responses: {
         201: {
-          description: 'User created successfully',
+          description: 'Product created successfully',
         },
         400: {
           description: 'Invalid input',
