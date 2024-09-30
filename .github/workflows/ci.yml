@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Linter and Test
 
 on:
   push:
@@ -25,16 +25,16 @@ jobs:
         run: npm install
 
       - name: Run linter
-        run: npm run lint # Certifique-se de ter um script lint no seu package.json
+        run: npm run lint
 
       - name: Run tests
-        run: npm test # Certifique-se de ter um script test no seu package.json
+        run: npm test
 
       - name: Generate test coverage
-        run: npm run coverage # Certifique-se de ter um script coverage no seu package.json
+        run: npm run coverage
 
       - name: Upload coverage results
-        uses: actions/upload-artifact@v3 # Atualizando para a versão v3
+        uses: actions/upload-artifact@v3 # Certifique-se de que está usando v3
         with:
           name: coverage-results
           path: coverage/ # Ajuste conforme o diretório onde os resultados de cobertura são gerados
