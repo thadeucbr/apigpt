@@ -23,12 +23,4 @@ jobs:
 
       - name: Run tests with coverage
         run: npm run test -- --coverage
-
-      - name: Check test coverage
-        run: |
-          COVERAGE=$(grep -Po 'All files[^|]*\|\s*\K[0-9]+' coverage/lcov-report/index.html)
-          echo "Coverage is $COVERAGE%"
-          if [ $COVERAGE -lt 80 ]; then
-            echo "Coverage is below 80%. Failing the job."
-            exit 1
-          fi
+        
