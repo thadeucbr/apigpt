@@ -54,7 +54,9 @@ describe('gpt', () => {
 
     await gpt({ completion: mockCompletion });
 
-    expect(consoleLogSpy).toHaveBeenCalledWith(mockResponse.choices[0].message.tool_calls);
+    expect(consoleLogSpy).toHaveBeenCalledWith(
+      mockResponse.choices[0].message.tool_calls
+    );
     consoleLogSpy.mockRestore();
   });
 

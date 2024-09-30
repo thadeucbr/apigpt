@@ -1,12 +1,16 @@
-import { UserSchema, ProductSchema, OrderSchema } from '../../database/schema/index.js';
+import {
+  UserSchema,
+  ProductSchema,
+  OrderSchema,
+} from '../../database/schema/index.js';
 const schemas = {
   User: {
-    description: "Represents a user in the system.",
+    description: 'Represents a user in the system.',
     properties: UserSchema.obj,
     model: 'User',
   },
   Product: {
-    description: "Represents a product in the inventory.",
+    description: 'Represents a product in the inventory.',
     properties: ProductSchema.obj,
     model: 'Product',
   },
@@ -22,7 +26,7 @@ const getSchemas = () => {
     name,
     description: schema.description,
     properties: schema.properties,
-    model: schema.model
+    model: schema.model,
   }));
 };
 

@@ -39,16 +39,18 @@ describe('gptMiddleware', () => {
       status: 'success',
       message: 'Success',
     });
-    
-    expect(aiService.default).toHaveBeenCalledWith(expect.objectContaining({
-      body: { input: 'Hello, GPT!' },
-      header: expect.objectContaining({
-        authorization: 'Bearer token',
-      }),
-      query: {},
-      method: 'POST',
-      url: '/gpt',
-    }));
+
+    expect(aiService.default).toHaveBeenCalledWith(
+      expect.objectContaining({
+        body: { input: 'Hello, GPT!' },
+        header: expect.objectContaining({
+          authorization: 'Bearer token',
+        }),
+        query: {},
+        method: 'POST',
+        url: '/gpt',
+      })
+    );
   });
 
   it('should handle errors from aiService', async () => {

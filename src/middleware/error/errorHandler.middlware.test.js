@@ -1,21 +1,20 @@
 import express from 'express';
 import request from 'supertest';
-import errorHandler from './errorHandler.middlware.js'; // Ajuste o caminho conforme necessário
+import errorHandler from './errorHandler.middlware.js';
 
 describe('errorHandler', () => {
   let app;
 
   beforeAll(() => {
     app = express();
-    app.use(express.json()); // Middleware para parsear JSON
+    app.use(express.json());
 
-    // Rota para simular erro
     app.get('/error', (req, res, next) => {
       const error = new Error('Test error');
-      next(error); // Passa o erro para o middleware de erro
+      next(error);
     });
 
-    app.use(errorHandler); // Usa o middleware de erro
+    app.use(errorHandler);
   });
 
   it('should respond with status 500 and error message', async () => {
@@ -29,11 +28,13 @@ describe('errorHandler', () => {
   });
 
   it('should log the error stack', async () => {
-    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(); // Mocka console.error
+    const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation();
 
     await request(app).get('/error');
 
-    expect(consoleErrorSpy).toHaveBeenCalledWith(expect.stringContaining('Test error')); // Verifica se o erro foi logado
-    consoleErrorSpy.mockRestore(); // Restaura o método original
+    expect(consoleErrorSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Test error')
+    );
+    consoleErrorSpy.mockRestore();
   });
 });

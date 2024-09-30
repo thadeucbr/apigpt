@@ -16,17 +16,17 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./route/**/*.js']
+  apis: ['./route/**/*.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 swaggerDocs.paths = {
   ...swaggerDocs.paths,
-  ...aiPath
-}
+  ...aiPath,
+};
 
-const setupSwagger = (app) => {
+const setupSwagger = app => {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 };
 
