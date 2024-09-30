@@ -18,7 +18,7 @@ Notably, the API is capable of handling both standard JSON calls and natural lan
     },
     servers: [
       {
-        url: `http://${process.env.SWAGGER_URL}:${process.env.EXPRESS_PORT}`,
+        url: process.env.SWAGGER_URL,
       },
     ],
   },
