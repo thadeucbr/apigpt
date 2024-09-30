@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import gpt from './gpt.config.js';
 import OpenAI from 'openai';
 
-vi.mock('openai'); // Mockando o módulo OpenAI
+vi.mock('openai');
 
 describe('gpt', () => {
   const mockCompletion = [{ role: 'user', content: 'Hello, how are you?' }];
@@ -11,14 +11,14 @@ describe('gpt', () => {
       {
         message: {
           content: 'I am fine, thank you!',
-          tool_calls: [], // Pode ser um array se você quiser testar esse caso
+          tool_calls: [],
         },
       },
     ],
   };
 
   beforeEach(() => {
-    vi.clearAllMocks(); // Limpa os mocks antes de cada teste
+    vi.clearAllMocks();
   });
 
   it('should return the correct message from OpenAI', async () => {
@@ -55,7 +55,7 @@ describe('gpt', () => {
     await gpt({ completion: mockCompletion });
 
     expect(consoleLogSpy).toHaveBeenCalledWith(mockResponse.choices[0].message.tool_calls);
-    consoleLogSpy.mockRestore(); // Restaura o método original
+    consoleLogSpy.mockRestore();
   });
 
   it('should return error message when an error occurs', async () => {

@@ -6,7 +6,6 @@ const aiController = async (req, res) => {
 
   const { message, statusCode, status } = JSON.parse(response.content);
   res.status(statusCode).json({ status, message });
-  // res.send(response)
 }
 
 export default aiController;

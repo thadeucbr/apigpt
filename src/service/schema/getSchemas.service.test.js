@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import getSchemas from './getSchemas.service.js'; // Ajuste o caminho conforme necessário
+import getSchemas from './getSchemas.service.js';
 
-// Mockando os esquemas para o teste
 vi.mock('../../database/schema/index.js', () => ({
   UserSchema: {
     obj: {
