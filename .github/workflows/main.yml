@@ -27,11 +27,11 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-      - name: List test files
-        run: find src -name "*.test.js" # Lista arquivos de teste para verificação
+      # - name: List test files
+      #   run: find src -name "*.test.js" # Lista arquivos de teste para verificação
 
-      - name: Run tests
-        run: npm test # Removeu --verbose
+      # - name: Run tests
+      #   run: npm test # Removeu --verbose
 
       - name: Generate test coverage
         run: npm run coverage
