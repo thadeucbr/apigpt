@@ -28,3 +28,12 @@ jobs:
 
       - name: Generate test coverage
         run: npm run coverage
+
+      - name: Check coverage threshold
+        run: |
+          COVERAGE=$(grep -o '[0-9]\+%' coverage/lcov.info | head -n 1 | tr -d '%')
+          echo "Coverage is at $COVERAGE%"
+          if [ "$COVERAGE" -lt 80 ]; then
+            echo "Coverage is below 80%, failing the job."
+            exit 1
+          fi
