@@ -17,16 +17,20 @@ export default defineConfig({
       'src/route/**',
     ],
     silent: false,
-  },
-  coverage: {
-    all: true,
-    exclude: [
-      'src/database/config/mongoose.config.js',
-      'src/database/model/**/*.js',
-      'src/database/schema/**/*.js', 
-      'src/helper/gpt/tool/**/*.js', 
-      'src/helper/swagger/**/*.js',
-      'src/route/**/*.js', 
-    ],
+    coverage: {
+      all: true,
+      exclude: [
+        'node_modules',
+        'src/main.js',
+        'eslint.config.js',
+        'vitest.config.js',
+        'src/database/config/mongoose.config.js',
+        'src/database/model/**/*.js',
+        'src/database/schema/**/*.js', 
+        'src/helper/gpt/tool/**/*.js', 
+        'src/helper/swagger/**/*.js',
+        'src/route', 
+      ],
+    },
   },
 });
