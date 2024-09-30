@@ -18,6 +18,7 @@ export default defineConfig({
     ],
     silent: false,
     coverage: {
+      provider: 'istanbul',
       reporter: ['text', 'lcov'],
       all: true,
       exclude: [

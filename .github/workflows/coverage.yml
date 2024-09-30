@@ -1,46 +1,34 @@
-name: Coverage
+name: Test Coverage
 
 on:
-  push:
-    branches:
-      - main
-      - developer
   pull_request:
     branches:
       - main
-      - developer
 
 jobs:
-  coverage:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20.17.0'
+          node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Generate test coverage
-        run: npm run coverage
+      - name: Run tests with coverage
+        run: npm run test -- --coverage
 
-      - name: Check coverage
+      - name: Check test coverage
         run: |
-          coverage=$(npm run coverage -- --reporter=default | grep -o '[0-9]*\.[0-9]*' | head -n 1)
-          if (( $(echo "$coverage < 80" | bc -l) )); then
-            echo "Coverage is below 80%! Current coverage: $coverage%"
+          COVERAGE=$(grep -Po 'All files[^|]*\|\s*\K[0-9]+' coverage/lcov-report/index.html)
+          echo "Coverage is $COVERAGE%"
+          if [ $COVERAGE -lt 80 ]; then
+            echo "Coverage is below 80%. Failing the job."
             exit 1
-          else
-            echo "Coverage is sufficient: $coverage%"
           fi
-
-      - name: Upload coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage-results
-          path: coverage/
