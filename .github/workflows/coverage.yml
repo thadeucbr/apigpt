@@ -1,0 +1,46 @@
+name: Coverage
+
+on:
+  push:
+    branches:
+      - main
+      - developer
+  pull_request:
+    branches:
+      - main
+      - developer
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.17.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate test coverage
+        run: npm run coverage
+
+      - name: Check coverage
+        run: |
+          coverage=$(npm run coverage -- --reporter=text-lcov | grep -o '[0-9]*\.[0-9]*' | head -n 1)
+          if (( $(echo "$coverage < 80" | bc -l) )); then
+            echo "Coverage is below 80%! Current coverage: $coverage%"
+            exit 1
+          else
+            echo "Coverage is sufficient: $coverage%"
+          fi
+
+      - name: Upload coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-results
+          path: coverage/
