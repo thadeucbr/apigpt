@@ -4,12 +4,6 @@ export default async function gpt({ completion }) {
   try {
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   
-    // console.log({
-    //   model: process.env.OPENAI_MODEL,
-    //   messages: completion,
-    //   temperature: process.env.OPENAI_TEMPERATURE,
-    //   tools: tools.default
-    // })
     const response = await openai.chat.completions.create({
       model: process.env.OPENAI_MODEL,
       messages: completion,
