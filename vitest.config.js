@@ -3,9 +3,8 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'node', // Use o ambiente Node.js para testes
-    coverage: {
-      provider: 'v8', // Use o V8 para relatórios de cobertura
-    },
+    environment: 'node',
+    include: ['src/**/*.{test,spec}.{js,mjs,cjs}'], // Inclua seus arquivos de teste
+    exclude: ['node_modules', 'dist', 'cypress'], // Excluir diretórios desnecessários
   },
 });
