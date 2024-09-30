@@ -6,6 +6,9 @@
   "module": "src/main.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint src --fix",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
     "start": "node src/main.js",
     "dev": "nodemon src/main.js"
   },
@@ -22,7 +25,13 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@eslint/js": "^9.11.1",
+    "@vitest/coverage-v8": "^2.1.1",
+    "eslint": "^9.11.1",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.7",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.1"
   },
   "engines": {
     "node": "20.17.0"
