@@ -14,7 +14,7 @@ const aiRepositoryTool = {
         query: {
           type: 'object',
           description:
-            'The query parameters used for the operation. Structure depends on the transaction type, Required for update operations. Include subpropeties query.filter and query.update',
+            'The query parameters used for the operation. Structure depends on the transaction type.',
           properties: {
             filter: {
               type: 'object',
@@ -23,8 +23,7 @@ const aiRepositoryTool = {
             },
             update: {
               type: 'object',
-              description:
-                'Data to update. Required for update operations. Include subpropeties query.filter and query.update',
+              description: 'Data to update (required for update transactions).',
             },
           },
           required: ['filter'],
