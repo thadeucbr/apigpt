@@ -5,6 +5,7 @@ import userSwagger from './path/user/user.swagger.js';
 import userNaturalSwagger from './path/user/userNatural.swagger.js';
 import productSwagger from './path/product/product.swagger.js';
 import productNaturalSwagger from './path/product/productNatural.swagger.js';
+import aiSwagger from './path/ai/ai.swagger.js';
 dotenv.config();
 const swaggerOptions = {
   swaggerDefinition: {
@@ -33,6 +34,7 @@ swaggerDocs.paths = {
   ...userNaturalSwagger,
   ...productSwagger,
   ...productNaturalSwagger,
+  ...aiSwagger,
 };
 
 const setupSwagger = app => {
